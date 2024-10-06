@@ -1,0 +1,51 @@
+config t
+NO ip access-list standard NOSCHOOL
+ip access-list standard NOSCHOOL
+DENY 172.67.14.0 0.0.0.255
+DENY 50.7.160.0 0.0.0.255
+DENY 184.168.125.0 0.0.0.255
+DENY 155.137.92.0 0.0.0.255
+DENY 88.208.0.0 0.0.0.255
+DENY 122.55.48.0 0.0.0.255
+Permit Any
+Int Gi 1
+ ip access-group NOSCHOOL in
+ end
+
+
+block
+
+config t
+NO ip access-list standard NOBANK
+ip access-list standard NOBANK
+DENY 151.101.3.0 0.0.0.255
+DENY 45.79.222.0 0.0.0.255
+DENY 118.215.79.0 0.0.0.255
+DENY 104.18.29.0 0.0.0.255
+DENY 23.11.89.0 0.0.0.255
+Permit Any
+Int Gi 1
+no ip access-group NOSCHOOL in
+ ip access-group NOBANK in
+ end
+
+
+config t
+NO ip access-list standard NOSALAMIN1
+ip access-list standard NOSALAMIN1
+PERMIT 10.12.0.0 0.0.255.255
+PERMIT 10.31.0.0 0.0.255.255
+PERMIT 10.32.0.0 0.0.255.255
+PERMIT 10.52.0.0 0.0.255.255
+Int Gi 0/0/1
+ ip access-group NOSALAMIN1 in
+ end
+
+
+!! remove acl: ping/call lahat:
+
+config t
+Int Gi 0/0/1
+ NO ip access-group WITHSALAMIN1 in
+ NO ip access-group NOSALAMIN1 in
+ end
