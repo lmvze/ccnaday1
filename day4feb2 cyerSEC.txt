@@ -81,17 +81,17 @@ ping www.sti.edu 122.55.48.0
 
 TASK2: USE STANDARD ACCESS-LIST TO BLOCK OTHER CONTRIES/CLASSMATE:
 config t
-NO ip access-list standard NOCOL1
-ip access-list standard NOCOL1
-DENY 10.11.0.0 0.0.255.255
-DENY 10.21.0.0 0.0.255.255
-DENY 10.31.0.0 0.0.255.255
-DENY 10.41.0.0 0.0.255.255
-DENY 10.51.0.0 0.0.255.255
-DENY 10.61.0.0 0.0.255.255
+NO ip access-list standard NOEVENCLASSMATE1
+ip access-list standard NOEVENCLASSMATE1
+DENY 10.12.0.0 0.0.255.255
+DENY 10.22.0.0 0.0.255.255
+DENY 10.32.0.0 0.0.255.255
+DENY 10.42.0.0 0.0.255.255
+DENY 10.52.0.0 0.0.255.255
+DENY 10.62.0.0 0.0.255.255
 Permit Any
 Int Gi 0/0/1
- ip access-group NOCOL1 in
+ ip access-group NOEVENCLASSMATE1 in
  end
 
 TASK3: When you become a Security Analyst:
@@ -192,7 +192,7 @@ intentionally hackable websites
 task6: How to Make CUCM intentionally hackable to Learn
 the Basics for Firewalls.
 before: nmap -v 10.m.100.8
-@Cucm:
+@Cucm: fa 0/0 or CSR1000v = gi3
 config t
 int Gi 3
  no shut
